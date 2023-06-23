@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 12:59:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/06/23 17:09:45 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/06/23 18:48:42 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,9 @@ int	ft_init_args(int ac, char **av, t_args *args)
 	args->time_to_sleep = ft_atoi(av[4]);
 	args->start_time = ft_get_time();
 	if (ac == 6)
+	{
+		if (!ft_atoi(av[5]))
+			return (1);
 		args->eat_times = ft_atoi(av[5]);
+	}
 }
