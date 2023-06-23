@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   init_args.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/14 18:22:36 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/06/23 16:09:15 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/06/23 12:59:06 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/06/23 15:23:26 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-int	main(int ac, char **av)
+int	ft_init_args(int ac, char **av, t_args *args)
 {
-	struct timeval	tp;
-
-	gettimeofday(&tp, NULL);
-	printf("[%ld]", tp.tv_sec);
-	if (ac < 5 || ac > 6)
-		return (0);
+	args->philos_num = atoi(av[1]);
+	args->time_to_die = atoi(av[2]);
+	args->time_to_eat = atoi(av[3]);
+	args->time_to_sleep = atoi(av[4]);
+	args->start_time = ft_get_time();
+	if (ac == 6)
+		args->eat_times = atoi(av[5]);
 }
