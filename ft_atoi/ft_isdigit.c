@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_args.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/23 12:59:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/06/23 17:09:45 by tmoumni          ###   ########.fr       */
+/*   Created: 2022/10/08 11:25:42 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/06/23 17:08:10 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./philo.h"
+#include "../philo.h"
 
-int	ft_init_args(int ac, char **av, t_args *args)
+int	ft_isdigit(int d)
 {
-	args->philos_num = ft_atoi(av[1]);
-	args->time_to_die = ft_atoi(av[2]);
-	args->time_to_eat = ft_atoi(av[3]);
-	args->time_to_sleep = ft_atoi(av[4]);
-	args->start_time = ft_get_time();
-	if (ac == 6)
-		args->eat_times = ft_atoi(av[5]);
+	if (d >= '0' && d <= '9')
+		return (1);
+	return (0);
 }
