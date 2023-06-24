@@ -6,11 +6,11 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 15:23:49 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/06/23 16:05:36 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/06/24 11:59:52 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./philo.h"
+#include "philo.h"
 
 int	ft_init_philo(t_philo **philo, t_args *args)
 {
@@ -29,4 +29,5 @@ int	ft_init_philo(t_philo **philo, t_args *args)
 		(*philo)[i].eat_count = 0;
 		i++;
 	}
+	return (0);
 }

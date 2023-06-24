@@ -6,11 +6,11 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 16:03:12 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/06/23 16:04:29 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/06/24 11:59:57 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./philo.h"
+#include "philo.h"
 
 long long	ft_get_time(void)
 {

@@ -6,14 +6,17 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 12:59:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/06/23 18:48:42 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/06/24 12:00:02 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./philo.h"
+#include "philo.h"
 
 int	ft_init_args(int ac, char **av, t_args *args)
 {
+	if (!ft_atoi(av[1]) || ft_atoi(av[2]) < 0
+		|| ft_atoi(av[3]) < 0 || ft_atoi(av[4]) < 0)
+		return (1);
 	args->philos_num = ft_atoi(av[1]);
 	args->time_to_die = ft_atoi(av[2]);
 	args->time_to_eat = ft_atoi(av[3]);
@@ -25,4 +28,5 @@ int	ft_init_args(int ac, char **av, t_args *args)
 			return (1);
 		args->eat_times = ft_atoi(av[5]);
 	}
+	return (0);
 }

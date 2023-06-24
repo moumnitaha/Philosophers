@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:31:32 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/06/23 17:09:08 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/06/24 11:35:28 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_philo{
 }	t_philo;
 
 int			ft_init_args(int ac, char **av, t_args *args);
+int			ft_init_philo(t_philo **philo, t_args *args);
 long long	ft_get_time(void);
 int			ft_atoi(const char *str);
 int			ft_isalnum(int c);
