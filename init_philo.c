@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 15:23:49 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/06/24 11:59:52 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/06/24 22:49:05 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	ft_init_philo(t_philo **philo, t_args *args)
 	{
 		(*philo)[i].args = *args;
 		(*philo)[i].id = i;
+		(*philo)[i].left = i;
 		(*philo)[i].right = (i + 1) % args->philos_num;
 		(*philo)[i].last_eat_time = ft_get_time();
 		(*philo)[i].eat_count = 0;

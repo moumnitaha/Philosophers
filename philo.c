@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 18:22:36 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/06/24 18:33:22 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/06/24 22:46:25 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_args	*args;
+	t_philo	*philos;
 
 	args = malloc(sizeof(t_args));
 	if (ac < 5 || ac > 6)
@@ -29,6 +30,17 @@ int	main(int ac, char **av)
 		printf("start time : [%lld]\n", args->start_time);
 		if (ac == 6)
 			printf("eat times  : [%d]\n", args->eat_times);
+	}
+	if (!ft_init_philo(&philos, args))
+	{
+		for (int i = 0; i < args->philos_num; i++)
+		{
+			printf("id\t[%d]\n", philos[i].id);
+			printf("count\t[%d]\n", philos[i].eat_count);
+			printf("last\t[%d]\n", philos[i].last_eat_time);
+			printf("left\t[%d]\n", philos[i].left);
+			printf("right\t[%d]\n", philos[i].right);
+		}
 	}
 	return (0);
 }
