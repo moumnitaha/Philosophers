@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:31:32 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/06/24 15:55:57 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/06/25 11:01:14 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_args{
 	long long		time_to_sleep;
 	long long		start_time;
 	int				eat_times;
+	int				finished_eat;
 	int				finish;
 	pthread_mutex_t	forks;
 	pthread_mutex_t	print;
