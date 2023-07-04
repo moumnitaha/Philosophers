@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   ft_philo_print.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/14 18:22:36 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/04 18:34:16 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/07/04 16:57:14 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/07/04 18:45:39 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int ac, char **av)
+int	ft_philo_print(t_args *args, int id, char *msg)
 {
-	t_args	args;
-	t_philo	*philos;
+	long long	now;
 
-	memset(&args, 0, sizeof(t_args));
-	if (ac < 5 || ac > 6)
-		return (0);
-	if (ft_init_args(ac, av, &args))
-	{
-		printf("Error init args\n");
-		exit(0);
-	}
-	if (ft_init_philo(&philos, &args))
-	{
-		printf("Error init philo\n");
-		exit(0);
-	}
-	if (ft_philo_start(&args, philos))
-	{
-		printf("Error start philo\n");
-		exit(0);
-	}
+	now = ft_get_time();
+	if (now == -1)
+		return (-1);
+	pthread_mutex_lock(&(args->print));
+	if (!(args->finish))
+		printf("%lld %d %s",( now - args->start_time) * 1000, id, msg);
+	pthread_mutex_unlock(&(args->print));
 	return (0);
 }

@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   ft_pass_time.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/14 18:22:36 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/04 18:34:16 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/07/04 16:45:57 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/07/04 16:55:17 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "./philo.h"
 
-int	main(int ac, char **av)
+void	pass_time(long long time, t_args *args)
 {
-	t_args	args;
-	t_philo	*philos;
+	long long	start;
+	long long	now;
 
-	memset(&args, 0, sizeof(t_args));
-	if (ac < 5 || ac > 6)
-		return (0);
-	if (ft_init_args(ac, av, &args))
+	start = ft_get_time();
+	while (!(args->finish))
 	{
-		printf("Error init args\n");
-		exit(0);
+		now = ft_get_time();
+		if ((now - start) >= time)
+			break ;
+		usleep(10);
 	}
-	if (ft_init_philo(&philos, &args))
-	{
-		printf("Error init philo\n");
-		exit(0);
-	}
-	if (ft_philo_start(&args, philos))
-	{
-		printf("Error start philo\n");
-		exit(0);
-	}
-	return (0);
 }
