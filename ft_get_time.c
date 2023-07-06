@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 16:03:12 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/06/24 11:59:57 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/06 17:14:58 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 long long	ft_get_time(void)
 {
 	struct timeval	tp;
+	long long		time;
 
 	gettimeofday(&tp, NULL);
-	return (tp.tv_sec);
+	time = (tp.tv_sec) * 1000 + (tp.tv_usec) / 1000;
+	return (time);
 }

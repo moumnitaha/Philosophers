@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:31:32 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/04 17:53:41 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/06 12:07:50 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ typedef struct s_args{
 	int				finished_eat;
 	int				finish;
 	pthread_mutex_t	*forks;
-	pthread_mutex_t	print;
+	pthread_mutex_t	print_msg;
 }	t_args;
 
 typedef struct s_philo{
 	int			id;
 	int			left;
 	int			right;
-	int			last_eat_time;
+	long long	last_eat_time;
 	int			eat_count;
 	t_args		args;
 	pthread_t	thread;

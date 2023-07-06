@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 12:59:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/04 12:47:04 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/06 12:09:29 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_init_args_mutex(t_args *args)
 {
 	int	i;
 
-	if (pthread_mutex_init(&(args->print), NULL))
+	if (pthread_mutex_init(&(args->print_msg), NULL))
 		return (1);
 	args->forks = malloc(sizeof(pthread_mutex_t) * args->philos_num);
 	if (!args->forks)

@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:57:14 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/04 18:45:39 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/06 13:36:37 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	ft_philo_print(t_args *args, int id, char *msg)
 	now = ft_get_time();
 	if (now == -1)
 		return (-1);
-	pthread_mutex_lock(&(args->print));
+	pthread_mutex_lock(&(args->print_msg));
 	if (!(args->finish))
-		printf("%lld %d %s",( now - args->start_time) * 1000, id, msg);
-	pthread_mutex_unlock(&(args->print));
+		printf("%lld %d %s", now - args->start_time, id, msg);
+	pthread_mutex_unlock(&(args->print_msg));
 	return (0);
 }
