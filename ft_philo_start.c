@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:31:12 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/06 18:35:31 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/06 19:31:56 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	ft_philo_start(t_args *args, t_philo *philo)
 	i = 0;
 	while (i < args->philos_num)
 	{
+		printf("4 310 200 100\n");
 		pthread_join(philo[i].thread, NULL);
 		i++;
 	}

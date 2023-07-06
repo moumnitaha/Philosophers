@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:44:14 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/06 19:12:47 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/06 19:23:51 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_philo_finish(t_args *args, t_philo *philo)
 			now = ft_get_time();
 			if ((now - philo[i].last_eat_time) >= args->time_to_die)
 			{
-				ft_philo_print(args, philo->id, "died\n");
+				ft_philo_print(args, philo->id, "\033[1;31mdied\033[0m\n");
 				args->finish = 1;
 				break ;
 			}

@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:54:31 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/06 13:33:22 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/06 19:18:47 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 void	ft_free_thread(t_args *args, t_philo *philo)
 {
 	if (args->eat_times == philo->eat_count)
-		printf("free\n");
+		printf("\n");
 	exit(0);
 }
