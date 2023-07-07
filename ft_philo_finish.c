@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:44:14 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/07 18:42:10 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/07 19:15:14 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_philo_finish(t_args *args, t_philo *philos)
 		if (args->eat_times && args->finished_eat == args->total_eat)
 		{
 			args->finish = 1;
+			ft_destroy_mutex(args);
 			break ;
 		}
 		i = 0;
@@ -32,6 +33,7 @@ void	ft_philo_finish(t_args *args, t_philo *philos)
 			{
 				ft_philo_print(args, philos[i].id, RED"died"END"\n");
 				args->finish = 1;
+				ft_destroy_mutex(args);
 				break ;
 			}
 			i++;
