@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:31:12 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/06 19:31:56 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/07 12:43:07 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ void	*ft_thread_action(void *argv)
 		ft_philo_action(args, philo);
 		if (args->eat_times == philo->eat_count)
 		{
-			args->finished_eat++;
+			printf("finished [[[[%d]]]]\n", args->finished_eat);
+			// args->finished_eat++;
+			// printf("[[[[%d]]]]\n", args->finished_eat);
 			return (0);
 		}
 		ft_philo_print(args, philo->id, "is sleeping\n");
@@ -53,8 +55,7 @@ int	ft_philo_start(t_args *args, t_philo *philo)
 	i = 0;
 	while (i < args->philos_num)
 	{
-		printf("4 310 200 100\n");
-		pthread_join(philo[i].thread, NULL);
+		pthread_detach(philo[i].thread);
 		i++;
 	}
 	ft_free_thread(args, philo);

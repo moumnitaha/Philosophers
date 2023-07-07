@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:44:14 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/06 19:23:51 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/07 12:44:36 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_philo_finish(t_args *args, t_philo *philo)
 
 	while (!(args->finish))
 	{
+		printf("eat times:[%d] finished:[%d]\n", args->eat_times, args->finished_eat);
 		if ((args->eat_times != 0) && (args->philos_num == args->finished_eat))
 		{
 			args->finish = 1;
