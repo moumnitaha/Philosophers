@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:44:14 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/07 16:29:25 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/07 18:15:46 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	they_all_eat(t_args *args, t_philo *philos)
 
 	i = 0;
 	count = 0;
+	if (!args->eat_times)
+		return (0);
 	while (i < args->philos_num)
 	{
 		if (philos[i].eat_count == args->eat_times)
@@ -35,8 +37,10 @@ void	ft_philo_finish(t_args *args, t_philo *philos)
 
 	while (!(args->finish))
 	{
-		if (args->eat_times && (they_all_eat(args, philos) == args->philos_num))
+		if (they_all_eat(args, philos) == args->philos_num)
 		{
+			printf("====>[%d]\n", args->finished_eat);
+			printf("====>[%d]\n", philos->eat_count * args->philos_num);
 			args->finish = 1;
 			break ;
 		}

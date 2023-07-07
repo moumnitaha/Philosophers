@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:31:12 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/07 16:34:29 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/07 18:15:39 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	*ft_thread_action(void *argv)
 	t_philo	*philo;
 
 	philo = argv;
-	args = &philo->args;
+	args = philo->args;
 	if (philo->id % 2)
-		usleep(1000);
+		usleep(100);
 	while (!(args->finish))
 	{
 		ft_philo_action(args, philo);
 		ft_philo_print(args, philo->id, "is sleeping\n");
-		ft_await_time(args->time_to_sleep, args);
+		usleep(args->time_to_sleep * 1000);
 		ft_philo_print(args, philo->id, "is thinking\n");
 	}
 	return (0);

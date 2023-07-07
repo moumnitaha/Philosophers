@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_philo_print.c                                   :+:      :+:    :+:   */
+/*   ft_destroy_mutex.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 16:57:14 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/07 17:11:54 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/07/07 17:31:00 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/07/07 17:35:19 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_philo_print(t_args *args, int id, char *msg)
+void	ft_destroy_mutex(t_args *args)
 {
-	long long	now;
+	int	i;
 
-	now = ft_get_time();
-	if (now == -1)
-		return (-1);
-	pthread_mutex_lock(&(args->print_msg));
-	if (!(args->finish))
-		printf("%lld %d %s", now - args->start_time, id, msg);
-	pthread_mutex_unlock(&(args->print_msg));
-	return (0);
+	i = 0;
+	while (i < args->philos_num)
+	{
+		pthread_mutex_destroy(&(args[i].forks[i]));
+		i++;
+	}
 }
