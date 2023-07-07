@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 12:59:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/07 12:46:47 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/07 18:37:38 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,13 @@ int	ft_init_args(int ac, char **av, t_args *args)
 	args->start_time = ft_get_time();
 	args->finish = 0;
 	args->finished_eat = 0;
+	args->total_eat = 0;
 	if (ac == 6)
 	{
 		if (ft_atoi(av[5]) <= 0)
 			return (1);
 		args->eat_times = ft_atoi(av[5]);
+		args->total_eat = args->eat_times * args->philos_num;
 	}
 	if (ft_init_args_mutex(args))
 		return (1);

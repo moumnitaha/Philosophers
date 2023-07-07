@@ -6,29 +6,11 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:44:14 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/07 18:15:46 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/07 18:42:10 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-int	they_all_eat(t_args *args, t_philo *philos)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	if (!args->eat_times)
-		return (0);
-	while (i < args->philos_num)
-	{
-		if (philos[i].eat_count == args->eat_times)
-			count++;
-		i++;
-	}
-	return (count);
-}
 
 void	ft_philo_finish(t_args *args, t_philo *philos)
 {
@@ -37,10 +19,8 @@ void	ft_philo_finish(t_args *args, t_philo *philos)
 
 	while (!(args->finish))
 	{
-		if (they_all_eat(args, philos) == args->philos_num)
+		if (args->eat_times && args->finished_eat == args->total_eat)
 		{
-			printf("====>[%d]\n", args->finished_eat);
-			printf("====>[%d]\n", philos->eat_count * args->philos_num);
 			args->finish = 1;
 			break ;
 		}
