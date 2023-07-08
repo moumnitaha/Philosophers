@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:08:44 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/07 19:00:53 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/08 11:55:52 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_philo_routine(t_args *args, t_philo *philo)
 {
 	pthread_mutex_lock(&(args->forks[philo->left]));
-	ft_philo_print(args, philo->id, "has taken a fork\n");
+	ft_philo_print(args, philo->id, "has taken left fork\n");
 	pthread_mutex_lock(&(args->forks[philo->right]));
 	ft_philo_print(args, philo->id, "has taken a fork\n");
 	ft_philo_print(args, philo->id, "is eating\n");

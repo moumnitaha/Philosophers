@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 16:03:12 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/06 17:14:58 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/08 10:24:23 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ long long	ft_get_time(void)
 	long long		time;
 
 	gettimeofday(&tp, NULL);
-	time = (tp.tv_sec) * 1000 + (tp.tv_usec) / 1000;
+	time = ((tp.tv_sec) * 1000) + ((tp.tv_usec) / 1000);
 	return (time);
 }
