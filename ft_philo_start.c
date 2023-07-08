@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:31:12 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/07 19:10:16 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/08 16:03:42 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ void	*ft_thread_action(void *argv)
 	if (philos->id % 2)
 		usleep(100);
 	while (!(args->finish))
-	{
 		ft_philo_routine(args, philos);
-	}
 	return (0);
 }
 
@@ -44,5 +42,6 @@ int	ft_philo_start(t_args *args, t_philo *philos)
 	}
 	ft_philo_finish(args, philos);
 	ft_detach_threads(args, philos);
+	ft_free_thread(args, philos);
 	return (0);
 }
