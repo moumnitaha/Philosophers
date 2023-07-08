@@ -6,7 +6,7 @@
 #    By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 11:36:52 by tmoumni           #+#    #+#              #
-#    Updated: 2023/07/07 19:08:21 by tmoumni          ###   ########.fr        #
+#    Updated: 2023/07/08 17:50:13 by tmoumni          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ HEADER = philo.h
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = ft_free_thread.c ft_await_time.c ft_philo_finish.c ft_philo_start.c init_philo.c ft_detach_threads.c\
+SRCS = ft_free_thread.c ft_philo_finish.c ft_philo_start.c init_philo.c ft_detach_threads.c\
 	   ft_get_time.c ft_philo_routine.c ft_philo_print.c init_args.c philo.c ft_destroy_mutex.c\
 	   ft_atoi/ft_atoi.c ft_atoi/ft_isalnum.c ft_atoi/ft_isdigit.c ft_atoi/ft_isalpha.c
 OBJS=$(SRCS:%.c=%.o)
