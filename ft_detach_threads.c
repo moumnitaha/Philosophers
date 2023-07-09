@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:06:50 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/08 11:56:13 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/09 18:09:40 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@ void	ft_detach_threads(t_args *args, t_philo *philo)
 	i = 0;
 	while (i < args->philos_num)
 	{
-		if (args->finish)
-		{
-			if (pthread_detach(philo[i].thread))
-				printf(RED"Error detaching thread\n"END);
-		}
+		if (pthread_detach(philo[i].thread))
+			printf(RED"Error detaching thread\n"END);
 		i++;
 	}
 }
