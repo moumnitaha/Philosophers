@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_detach_threads.c                                :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 19:06:50 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/13 18:11:36 by tmoumni          ###   ########.fr       */
+/*   Created: 2022/10/08 11:25:42 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/06/24 12:08:11 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../philo.h"
 
-void	ft_detach_threads(t_args *args, t_philo *philo)
+int	ft_isdigit(int d)
 {
-	int	i;
-
-	i = 0;
-	while (i < args->philos_num)
-	{
-		if (pthread_detach(philo[i].thread))
-			printf(RED"Error detaching thread"END"\n");
-		i++;
-	}
+	if (d >= '0' && d <= '9')
+		return (1);
+	return (0);
 }

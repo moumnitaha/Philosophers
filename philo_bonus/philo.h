@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:31:32 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/13 17:27:21 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/07 19:07:36 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int			ft_init_philo(t_philo **philo, t_args *args);
 int			ft_philo_print(t_args *args, int id, char *msg);
 int			ft_philo_routine(t_args *args, t_philo *philo);
 int			ft_philo_start(t_args *args, t_philo *philo);
-void		ft_await(long long time);
 void		ft_philo_finish(t_args *args, t_philo *philos);
 void		ft_free_thread(t_args *args, t_philo *philo);
+void		ft_await_time(long long time, t_args *args);
 void		ft_destroy_mutex(t_args *args);
 void		ft_detach_threads(t_args *args, t_philo *philo);
 long long	ft_get_time(void);

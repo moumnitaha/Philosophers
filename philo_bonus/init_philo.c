@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_detach_threads.c                                :+:      :+:    :+:   */
+/*   init_philo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 19:06:50 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/13 18:11:36 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/06/23 15:23:49 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/07/07 17:48:46 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_detach_threads(t_args *args, t_philo *philo)
+int	ft_init_philo(t_philo **philo, t_args *args)
 {
 	int	i;
 
 	i = 0;
+	*philo = malloc(sizeof(t_philo) * args->philos_num);
+	if (!philo)
+		return (1);
 	while (i < args->philos_num)
 	{
-		if (pthread_detach(philo[i].thread))
-			printf(RED"Error detaching thread"END"\n");
+		(*philo)[i].args = args;
+		(*philo)[i].id = i;
+		(*philo)[i].left = i;
+		(*philo)[i].right = (i + 1) % args->philos_num;
+		(*philo)[i].last_eat_time = -1;
+		(*philo)[i].eat_count = 0;
 		i++;
 	}
+	return (0);
 }

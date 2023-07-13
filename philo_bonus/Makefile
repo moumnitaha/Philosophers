@@ -6,7 +6,7 @@
 #    By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 11:36:52 by tmoumni           #+#    #+#              #
-#    Updated: 2023/07/13 18:16:08 by tmoumni          ###   ########.fr        #
+#    Updated: 2023/07/13 15:40:34 by tmoumni          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,11 @@ RED=\033[1;31m
 CYAN = \033[1;36m
 END = \033[0m
 
-NAME = philo
+NAME = philo_bonus
 HEADER = philo.h
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g
+CFLAGS = -Wall -Wextra -Werror
 
 SRCS = ft_free_thread.c ft_philo_finish.c ft_philo_start.c init_philo.c ft_detach_threads.c\
 	   ft_get_time.c ft_philo_routine.c ft_philo_print.c init_args.c philo.c ft_destroy_mutex.c\
@@ -28,10 +28,10 @@ SRCS = ft_free_thread.c ft_philo_finish.c ft_philo_start.c init_philo.c ft_detac
 OBJS=$(SRCS:%.c=%.o)
 
 all: $(NAME)
-	@echo "\n$(GREEN)[[ philo created successfully! ]]$(END)\n"
+	@echo "\n$(GREEN)[[ philo_bonus created successfully! ]]$(END)\n"
 
 $(NAME): $(OBJS) $(SRCS) $(HEADER)
-	@echo "\nCreating $(GREEN)philo...$(END)"
+	@echo "\nCreating $(GREEN)philo_bonus...$(END)"
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.c $(HEADER)

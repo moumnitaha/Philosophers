@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_detach_threads.c                                :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 19:06:50 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/13 18:11:36 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/06/14 18:22:36 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/07/07 19:11:59 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_detach_threads(t_args *args, t_philo *philo)
+int	main(int ac, char **av)
 {
-	int	i;
+	t_args	args;
+	t_philo	*philos;
 
-	i = 0;
-	while (i < args->philos_num)
+	memset(&args, 0, sizeof(t_args));
+	if (ac < 5 || ac > 6)
+		return (0);
+	if (ft_init_args(ac, av, &args))
 	{
-		if (pthread_detach(philo[i].thread))
-			printf(RED"Error detaching thread"END"\n");
-		i++;
+		printf("Error init args\n");
+		exit(0);
 	}
+	if (ft_init_philo(&philos, &args))
+	{
+		printf("Error init philo\n");
+		exit(0);
+	}
+	if (ft_philo_start(&args, philos))
+	{
+		printf("Error start philo\n");
+		exit(0);
+	}
+	return (0);
 }
