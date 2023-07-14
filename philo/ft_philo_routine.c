@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:08:44 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/14 14:39:52 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/14 17:04:33 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,17 @@ void	ft_await(long long time)
 	}
 }
 
-int ft_philo_routine(t_args *args, t_philo *philo)
+int	ft_philo_routine(t_args *args, t_philo *philo)
 {
 	int	first_fork;
 	int	second_fork;
 
-	if (philo->left < philo->right)
+	first_fork = philo->right;
+	second_fork = philo->left;
+	if (philo->right > philo->left)
 	{
 		first_fork = philo->left;
 		second_fork = philo->right;
-	}
-	else
-	{
-		first_fork = philo->right;
-		second_fork = philo->left;
 	}
 	pthread_mutex_lock(&(args->forks[first_fork]));
 	ft_philo_print(args, philo->id, "has taken a fork\n");

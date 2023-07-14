@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_detach_threads.c                                :+:      :+:    :+:   */
+/*   ft_join_threads.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 19:06:50 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/13 18:11:36 by tmoumni          ###   ########.fr       */
+/*   Created: 2023/07/14 17:54:55 by tmoumni           #+#    #+#             */
+/*   Updated: 2023/07/14 17:54:58 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_detach_threads(t_args *args, t_philo *philo)
+void	ft_join_threads(t_args *args, t_philo *philos)
 {
 	int	i;
 
 	i = 0;
 	while (i < args->philos_num)
 	{
-		if (pthread_detach(philo[i].thread))
-			printf(RED"Error detaching thread"END"\n");
+		if (pthread_join(philos[i].thread, NULL))
+			printf(RED"Error joining thread"END"\n");
+		ft_await(5);
 		i++;
 	}
 }
