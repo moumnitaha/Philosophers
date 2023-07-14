@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:31:12 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/14 17:57:13 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/14 19:25:35 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_thread_action(void *arg)
 	philo = arg;
 	args = philo->args;
 	if (philo->id % 2)
-		ft_await(5);
+		ft_await(args->time_to_eat / 2);
 	while (args->finish == 0)
 		ft_philo_routine(args, philo);
 	return (0);

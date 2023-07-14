@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 17:54:55 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/14 17:54:58 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/14 19:11:48 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_join_threads(t_args *args, t_philo *philos)
 	{
 		if (pthread_join(philos[i].thread, NULL))
 			printf(RED"Error joining thread"END"\n");
-		ft_await(5);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:08:44 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/14 17:04:33 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/14 19:15:09 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,9 @@ void	ft_await(long long time)
 
 int	ft_philo_routine(t_args *args, t_philo *philo)
 {
-	int	first_fork;
-	int	second_fork;
-
-	first_fork = philo->right;
-	second_fork = philo->left;
-	if (philo->right > philo->left)
-	{
-		first_fork = philo->left;
-		second_fork = philo->right;
-	}
-	pthread_mutex_lock(&(args->forks[first_fork]));
+	pthread_mutex_lock(&(args->forks[philo->right]));
 	ft_philo_print(args, philo->id, "has taken a fork\n");
-	pthread_mutex_lock(&(args->forks[second_fork]));
+	pthread_mutex_lock(&(args->forks[philo->left]));
 	ft_philo_print(args, philo->id, "has taken a fork\n");
 	ft_philo_print(args, philo->id, "is eating\n");
 	pthread_mutex_lock(&(philo->m_last_eat));
@@ -52,8 +42,8 @@ int	ft_philo_routine(t_args *args, t_philo *philo)
 	pthread_mutex_unlock(&(args->m_finished_eat));
 	philo->eat_count++;
 	ft_await(args->time_to_eat);
-	pthread_mutex_unlock(&(args->forks[second_fork]));
-	pthread_mutex_unlock(&(args->forks[first_fork]));
+	pthread_mutex_unlock(&(args->forks[philo->left]));
+	pthread_mutex_unlock(&(args->forks[philo->right]));
 	ft_philo_print(args, philo->id, "is sleeping\n");
 	ft_await(args->time_to_sleep);
 	ft_philo_print(args, philo->id, "is thinking\n");
