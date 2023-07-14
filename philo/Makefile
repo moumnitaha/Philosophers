@@ -6,7 +6,7 @@
 #    By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 11:36:52 by tmoumni           #+#    #+#              #
-#    Updated: 2023/07/14 17:55:42 by tmoumni          ###   ########.fr        #
+#    Updated: 2023/07/14 19:56:25 by tmoumni          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ NAME = philo
 HEADER = philo.h
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=thread -g
 
 SRCS = ft_free_thread.c ft_philo_finish.c ft_philo_start.c init_philo.c ft_join_threads.c\
 	   ft_get_time.c ft_philo_routine.c ft_philo_print.c init_args.c philo.c ft_destroy_mutex.c\
