@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:31:32 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/13 17:27:21 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/14 10:54:21 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,20 @@ typedef struct s_args{
 	int				total_eat;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_msg;
+	pthread_mutex_t	m_finished_eat;
+	pthread_mutex_t	m_finish;
 }	t_args;
 
 typedef struct s_philo{
-	int			id;
-	int			left;
-	int			right;
-	long long	last_eat_time;
-	int			eat_count;
-	t_args		*args;
-	pthread_t	thread;
+	int				id;
+	int				left;
+	int				right;
+	long long		last_eat_time;
+	int				eat_count;
+	t_args			*args;
+	pthread_t		thread;
+	pthread_mutex_t	m_finish;
+	pthread_mutex_t	m_last_eat;
 }	t_philo;
 
 int			ft_init_args(int ac, char **av, t_args *args);

@@ -6,22 +6,33 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:57:14 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/13 15:30:52 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/14 12:09:26 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_philo_print(t_args *args, int id, char *msg)
+long long	elapsed_time(long long time)
 {
 	long long	now;
+	long long	elapsed;
 
 	now = ft_get_time();
-	if (now == -1)
+	elapsed = now - time;
+	if (elapsed < 0)
 		return (-1);
-	pthread_mutex_lock(&(args->print_msg));
+	return (elapsed);
+}
+
+int	ft_philo_print(t_args *args, int id, char *msg)
+{
+	pthread_mutex_lock(&(args->m_finish));
 	if (!(args->finish))
-		printf("%lld\t%d\t%s", now - args->start_time, id, msg);
-	pthread_mutex_unlock(&(args->print_msg));
+	{
+		pthread_mutex_lock(&(args->print_msg));
+		printf("%lld\t%d\t%s", elapsed_time(args->start_time), id, msg);
+		pthread_mutex_unlock(&(args->print_msg));
+	}
+	pthread_mutex_unlock(&(args->m_finish));
 	return (0);
 }
