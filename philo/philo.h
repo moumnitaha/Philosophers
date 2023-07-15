@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:31:32 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/14 17:54:02 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/15 16:00:49 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_philo{
 	int				eat_count;
 	t_args			*args;
 	pthread_t		thread;
-	pthread_mutex_t	m_finish;
 	pthread_mutex_t	m_last_eat;
 }	t_philo;
 
