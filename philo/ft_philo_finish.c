@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:44:14 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/17 00:00:56 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/17 00:03:26 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	check_death(t_args *args, t_philo *philo, long long now)
 		args->finish = 1;
 		pthread_mutex_unlock(&(args->m_finish));
 		pthread_mutex_unlock(&(philo->m_last_eat));
-		pthread_mutex_unlock(&(args->forks[philo->left]));
+		if (args->philos_num == 1)
+			pthread_mutex_unlock(&(args->forks[philo->left]));
 		printf(CYAN"MATE"END"\n");
 		return (1);
 	}
