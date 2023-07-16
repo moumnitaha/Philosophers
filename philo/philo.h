@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:31:32 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/15 16:00:49 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/16 19:18:21 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void		ft_free_thread(t_args *args, t_philo *philo);
 void		ft_destroy_mutex(t_args *args);
 void		ft_join_threads(t_args *args, t_philo *philo);
 long long	ft_get_time(void);
+long long	elapsed_time(long long time);
 int			ft_atoi(const char *str);
 int			ft_isalnum(int c);
 int			ft_isalpha(int c);

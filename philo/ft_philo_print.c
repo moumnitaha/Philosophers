@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:57:14 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/15 13:40:33 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/16 19:37:44 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ long long	elapsed_time(long long time)
 
 int	ft_philo_print(t_args *args, int id, char *msg)
 {
+	pthread_mutex_lock(&(args->print_msg));
 	pthread_mutex_lock(&(args->m_finish));
 	if (args->finish == 0)
 	{
-		pthread_mutex_lock(&(args->print_msg));
 		printf("%lld\t%d\t%s", elapsed_time(args->start_time), id, msg);
-		pthread_mutex_unlock(&(args->print_msg));
 	}
 	pthread_mutex_unlock(&(args->m_finish));
+	pthread_mutex_unlock(&(args->print_msg));
 	return (0);
 }

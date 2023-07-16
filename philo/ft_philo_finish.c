@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:44:14 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/15 15:54:25 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/16 19:33:44 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void	ft_philo_finish(t_args *args, t_philo *philos)
 			pthread_mutex_unlock(&(philos[i].m_last_eat));
 			i++;
 		}
+		ft_await(10);
 	}
 }

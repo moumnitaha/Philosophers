@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:31:12 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/16 13:38:49 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/16 19:32:08 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	*ft_thread_action(void *arg)
 		ft_await(50);
 	while (1)
 	{
-		ft_philo_routine(args, philo);
 		pthread_mutex_lock(&(args->m_finish));
 		if (args->finish == 1)
 		{
@@ -31,6 +30,8 @@ void	*ft_thread_action(void *arg)
 			break ;
 		}
 		pthread_mutex_unlock(&(args->m_finish));
+		ft_philo_routine(args, philo);
+		ft_await(10);
 	}
 	return (0);
 }
@@ -49,6 +50,7 @@ int	ft_philo_start(t_args *args, t_philo *philos)
 		i++;
 	}
 	ft_philo_finish(args, philos);
+	printf(GREEN"SALINA"END"\n");
 	ft_join_threads(args, philos);
 	ft_free_thread(args, philos);
 	return (0);
