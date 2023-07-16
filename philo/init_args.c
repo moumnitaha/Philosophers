@@ -6,11 +6,44 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 12:59:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/14 10:26:23 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/16 11:56:13 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_iswhitespace(char c)
+{
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
+	return (0);
+}
+
+int	ft_error_syntax(char **str, int ac)
+{
+	int	i;
+	int	j;
+
+	j = 1;
+	while (j < ac)
+	{
+		i = 0;
+		if (!str[j][0])
+			return (1);
+		while (str[j][i])
+		{
+			while (str[j][i] && ft_iswhitespace(str[j][i]))
+				i++;
+			if (str[j][i] == '+')
+				i++;
+			if (str[j][i] && str[j][i] != ' ' && !ft_isdigit(str[j][i]))
+				return (1);
+			i++;
+		}
+		j++;
+	}
+	return (0);
+}
 
 int	ft_init_args_mutex(t_args *args)
 {
@@ -37,6 +70,8 @@ int	ft_init_args_mutex(t_args *args)
 
 int	ft_init_args(int ac, char **av, t_args *args)
 {
+	if (ft_error_syntax(av, ac))
+		return (1);
 	if (ft_atoi(av[1]) <= 0 || ft_atoi(av[2]) < 0
 		|| ft_atoi(av[3]) < 0 || ft_atoi(av[4]) < 0)
 		return (1);
