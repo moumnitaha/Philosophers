@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:44:14 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/17 00:05:30 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/17 09:53:24 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ int	check_death(t_args *args, t_philo *philo, long long now)
 {
 	if (now - philo->last_eat_time >= args->time_to_die)
 	{
-		ft_philo_print(args, philo->id, RED"died"END"\n");
 		pthread_mutex_lock(&(args->m_finish));
 		args->finish = 1;
 		pthread_mutex_unlock(&(args->m_finish));
 		pthread_mutex_unlock(&(philo->m_last_eat));
 		if (args->philos_num == 1)
 			pthread_mutex_unlock(&(args->forks[philo->left]));
+		printf("%lld\t%d\tdied\n", elapsed_time(args->start_time), philo->id);
 		return (1);
 	}
 	return (0);
@@ -62,6 +62,6 @@ void	ft_philo_finish(t_args *args, t_philo *philos)
 			pthread_mutex_unlock(&(philos[i].m_last_eat));
 			i++;
 		}
-		ft_await(10);
+		ft_await(8);
 	}
 }

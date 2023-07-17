@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:31:12 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/16 23:44:46 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/17 09:53:46 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,7 @@ int	ft_philo_start(t_args *args, t_philo *philos)
 		i++;
 	}
 	ft_philo_finish(args, philos);
-	printf(GREEN"SALINA"END"\n");
 	ft_join_threads(args, philos);
-	printf(CYAN"JOINED"END"\n");
 	ft_free_thread(args, philos);
 	return (0);
 }
