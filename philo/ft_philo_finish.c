@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:44:14 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/18 10:25:16 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/18 11:53:50 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	ft_philo_finish(t_args *args, t_philo *philos)
 			break ;
 		pthread_mutex_unlock(&(args->m_finished_eat));
 		i = 0;
+		now = ft_get_time();
 		while (i < args->philos_num)
 		{
-			now = ft_get_time();
 			pthread_mutex_lock(&(philos[i].m_last_eat));
 			if (check_death(args, &(philos[i]), now))
 				break ;
