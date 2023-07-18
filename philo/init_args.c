@@ -6,11 +6,21 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 12:59:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/16 11:56:13 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/18 15:13:38 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
 
 int	ft_iswhitespace(char c)
 {
@@ -30,9 +40,9 @@ int	ft_error_syntax(char **str, int ac)
 		i = 0;
 		if (!str[j][0])
 			return (1);
-		while (str[j][i])
+		while (i < ft_strlen(str[j]))
 		{
-			while (str[j][i] && ft_iswhitespace(str[j][i]))
+			while (str[j][i] != '\0' && ft_iswhitespace(str[j][i]))
 				i++;
 			if (str[j][i] == '+')
 				i++;

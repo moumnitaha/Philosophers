@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 18:22:36 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/16 14:27:01 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/18 14:17:26 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	put_error_msg(char *msg)
 {
 	printf(RED"%s"END"\n", msg);
-	return (0);
+	return (1);
 }
 
 int	main(int ac, char **av)
