@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 12:59:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/18 19:14:03 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/18 19:35:15 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ int	ft_init_args(int ac, char **av, t_args *args)
 {
 	if (ft_error_syntax(av, ac))
 		return (1);
-	if (ft_atoi(av[1]) <= 0 || ft_atoi(av[2]) < 0
-		|| ft_atoi(av[3]) < 0 || ft_atoi(av[4]) < 0)
+	if (ft_atoi(av[1]) <= 0 || ft_atoi(av[2]) <= 0
+		|| ft_atoi(av[3]) <= 0 || ft_atoi(av[4]) <= 0)
 		return (1);
 	args->philos_num = ft_atoi(av[1]);
 	args->time_to_die = ft_atoi(av[2]);
