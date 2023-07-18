@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:44:14 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/17 12:31:27 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/18 10:25:16 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ int	check_death(t_args *args, t_philo *philo, long long now)
 		pthread_mutex_unlock(&(philo->m_last_eat));
 		if (args->philos_num == 1)
 			pthread_mutex_unlock(&(args->forks[philo->left]));
-		printf("%lld\t%d\tdied\n", elapsed_time(args->start_time), philo->id);
+		pthread_mutex_lock(&(philo->m_last_eat));
+		printf("%lld\t%d\tdied\n", now - philo->last_eat_time, philo->id);
+		pthread_mutex_unlock(&(philo->m_last_eat));
 		return (1);
 	}
 	return (0);
