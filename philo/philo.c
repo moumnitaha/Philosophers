@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 18:22:36 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/19 02:25:11 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/19 09:29:09 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,20 @@ int	put_error_msg(char *msg, char **av_t)
 	return (1);
 }
 
+int	check_args(int ac, char **av)
+{
+	int	i;
+
+	i = 1;
+	while (i < ac)
+	{
+		if (!av[i][0])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	t_args	args;
@@ -27,7 +41,7 @@ int	main(int ac, char **av)
 
 	memset(&args, 0, sizeof(t_args));
 	av_t = split_args(ac, av);
-	if (tab_size(av_t) < 4 || tab_size(av_t) > 5)
+	if (tab_size(av_t) < 4 || tab_size(av_t) > 5 || check_args(ac, av))
 		return (put_error_msg("Run ./philo arg1 arg2 arg3 arg4 [arg5]", av_t));
 	if (ft_init_args(av_t, &args))
 		return (put_error_msg("Error init args", av_t));

@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:31:51 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/19 02:29:53 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/19 09:29:27 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,7 @@ char	**split_args(int ac, char **av)
 		tmp = splited;
 		while (*splited)
 		{
-			a[j] = ft_strdup(*splited);
-			splited++;
-			j++;
+			a[j++] = ft_strdup(*splited++);
 		}
 		free_mem(tmp);
 		i++;
