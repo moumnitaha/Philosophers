@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:31:32 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/17 09:49:29 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/19 01:31:53 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,25 @@ typedef struct s_philo{
 	pthread_mutex_t	m_last_eat;
 }	t_philo;
 
-int			ft_init_args(int ac, char **av, t_args *args);
+int			ft_init_args(char **av_t, t_args *args);
 int			ft_init_philo(t_philo **philo, t_args *args);
 int			ft_philo_print(t_args *args, int id, char *msg);
 int			ft_philo_routine(t_args *args, t_philo *philo);
 int			ft_philo_start(t_args *args, t_philo *philo);
+int			ft_strlen(char *str);
+int			av_size(int ac, char **av);
+int			tab_size(char **array);
 void		ft_await(long long time);
+int			count_words(char const *s, char c);
+void		*free_mem(char **array);
 void		ft_philo_finish(t_args *args, t_philo *philos);
 void		ft_free_thread(t_args *args, t_philo *philo);
 void		ft_join_threads(t_args *args, t_philo *philo);
 long long	ft_get_time(void);
 long long	elapsed_time(long long time);
 int			ft_atoi(const char *str);
+char		**ft_split(char const *s, char c);
+char		**split_args(int ac, char **av);
 int			ft_isalnum(int c);
 int			ft_isalpha(int c);
 int			ft_isdigit(int d);

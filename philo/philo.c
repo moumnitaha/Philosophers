@@ -6,15 +6,16 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 18:22:36 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/18 14:17:26 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/19 02:25:11 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	put_error_msg(char *msg)
+int	put_error_msg(char *msg, char **av_t)
 {
 	printf(RED"%s"END"\n", msg);
+	free_mem(av_t);
 	return (1);
 }
 
@@ -22,15 +23,18 @@ int	main(int ac, char **av)
 {
 	t_args	args;
 	t_philo	*philos;
+	char	**av_t;
 
 	memset(&args, 0, sizeof(t_args));
-	if (ac < 5 || ac > 6)
-		return (put_error_msg("Error: use ./philo arg1 arg2 arg3 arg4 [arg5]"));
-	if (ft_init_args(ac, av, &args))
-		return (put_error_msg("Error init args"));
+	av_t = split_args(ac, av);
+	if (tab_size(av_t) < 4 || tab_size(av_t) > 5)
+		return (put_error_msg("Run ./philo arg1 arg2 arg3 arg4 [arg5]", av_t));
+	if (ft_init_args(av_t, &args))
+		return (put_error_msg("Error init args", av_t));
 	if (ft_init_philo(&philos, &args))
-		return (put_error_msg("Error init philosophers"));
+		return (put_error_msg("Error init philosophers", av_t));
 	if (ft_philo_start(&args, philos))
-		return (put_error_msg("Error start philosophers"));
+		return (put_error_msg("Error start philosophers", av_t));
+	free_mem(av_t);
 	return (0);
 }

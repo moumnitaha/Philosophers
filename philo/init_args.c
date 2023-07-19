@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 12:59:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/18 19:35:15 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/19 01:39:05 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,36 +22,31 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	ft_iswhitespace(char c)
+int	tab_size(char **array)
 {
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (array[i] != NULL)
+		i++;
+	return (i);
 }
 
-int	ft_error_syntax(char **str, int ac)
+int	ft_error_syntax(char **str, int count)
 {
 	int	i;
 	int	j;
 
 	j = 1;
-	while (j < ac)
+	while (j < count)
 	{
 		i = 0;
 		if (!str[j][0])
 			return (1);
-		while (ft_iswhitespace(str[j][i]) && i < ft_strlen(str[j]))
-			i++;
 		if (str[j][i] == '+' && i < ft_strlen(str[j]))
 			i++;
-		while (ft_isdigit(str[j][i]) && i < ft_strlen(str[j]))
-			i++;
-		while (i < ft_strlen(str[j]))
-		{
-			if (str[j][i] != ' ')
-				return (1);
-			i++;
-		}
+		if (!ft_isdigit(str[j][i]))
+			return (1);
 		j++;
 	}
 	return (0);
@@ -80,26 +75,26 @@ int	ft_init_args_mutex(t_args *args)
 	return (0);
 }
 
-int	ft_init_args(int ac, char **av, t_args *args)
+int	ft_init_args(char **av_t, t_args *args)
 {
-	if (ft_error_syntax(av, ac))
+	if (ft_error_syntax(av_t, tab_size(av_t)))
 		return (1);
-	if (ft_atoi(av[1]) <= 0 || ft_atoi(av[2]) <= 0
-		|| ft_atoi(av[3]) <= 0 || ft_atoi(av[4]) <= 0)
+	if (ft_atoi(av_t[0]) <= 0 || ft_atoi(av_t[1]) <= 0
+		|| ft_atoi(av_t[2]) <= 0 || ft_atoi(av_t[3]) <= 0)
 		return (1);
-	args->philos_num = ft_atoi(av[1]);
-	args->time_to_die = ft_atoi(av[2]);
-	args->time_to_eat = ft_atoi(av[3]);
-	args->time_to_sleep = ft_atoi(av[4]);
+	args->philos_num = ft_atoi(av_t[0]);
+	args->time_to_die = ft_atoi(av_t[1]);
+	args->time_to_eat = ft_atoi(av_t[2]);
+	args->time_to_sleep = ft_atoi(av_t[3]);
 	args->start_time = ft_get_time();
 	args->finish = 0;
 	args->finished_eat = 0;
 	args->total_eat = 0;
-	if (ac == 6)
+	if (tab_size(av_t) == 5)
 	{
-		if (ft_atoi(av[5]) <= 0)
+		if (ft_atoi(av_t[4]) <= 0)
 			return (1);
-		args->eat_times = ft_atoi(av[5]);
+		args->eat_times = ft_atoi(av_t[4]);
 		args->total_eat = args->eat_times * args->philos_num;
 	}
 	if (ft_init_args_mutex(args))
