@@ -6,7 +6,7 @@
 /*   By: tmoumni <tmoumni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 12:59:06 by tmoumni           #+#    #+#             */
-/*   Updated: 2023/07/19 01:39:05 by tmoumni          ###   ########.fr       */
+/*   Updated: 2023/07/19 10:35:09 by tmoumni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_error_syntax(char **str, int count)
 	int	i;
 	int	j;
 
-	j = 1;
+	j = 0;
 	while (j < count)
 	{
 		i = 0;
@@ -45,8 +45,12 @@ int	ft_error_syntax(char **str, int count)
 			return (1);
 		if (str[j][i] == '+' && i < ft_strlen(str[j]))
 			i++;
-		if (!ft_isdigit(str[j][i]))
-			return (1);
+		while (i < ft_strlen(str[j]))
+		{
+			if (!ft_isdigit(str[j][i]))
+				return (1);
+			i++;
+		}
 		j++;
 	}
 	return (0);
